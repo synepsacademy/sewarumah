@@ -3,17 +3,56 @@
 
 /* utilities */
 * {
-    font-family: dm sans;
+    font-family: 'DM Sans', sans-serif;
+}
+
+:root {
+    --color-primer: #68489A;
+    --color-primer-dark: #5a3e7f;
+    --color-primer-light: #8b6bb8;
 }
 
 .btn-primer {
-    background-color: #68489A;
+    background-color: var(--color-primer);
     color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .btn-primer:hover {
-    background-color: #5a3e7f;
+    background-color: var(--color-primer-dark);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(104, 72, 154, 0.3);
+}
+
+.btn-outline-primer {
+    border: 2px solid var(--color-primer);
+    color: var(--color-primer);
+    background: transparent;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primer:hover {
+    background-color: var(--color-primer);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.text-primer {
+    color: var(--color-primer);
+}
+
+.bg-primer {
+    background-color: var(--color-primer);
+}
+
+.object-fit-cover {
+    object-fit: cover;
 }
 
 /* utilities */
@@ -27,31 +66,145 @@
     margin-left: auto;
 }
 
-/* navbar */
-
-/* cta */
-.cta .card {
-    background-image: url(./assets/bg-cta.png);
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #cdcdcd;
-    border-radius: 10px;
-    height: 150px;
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* cta */
+/* navbar */
 
-/* kota */
+/* hero */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero .badge {
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 50px;
+}
+
+.search-form .card {
+    border-radius: 16px;
+}
+
+.search-form input,
+.search-form select {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+    border-color: var(--color-primer);
+    box-shadow: 0 0 0 0.2rem rgba(104, 72, 154, 0.15);
+}
+
+/* hero */
+
+/* tabs */
+.nav-pills .nav-link {
+    color: #666;
+    background: #f5f5f5;
+    border-radius: 50px;
+    padding: 10px 24px;
+    margin-right: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    background: #e8e8e8;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--color-primer);
+    color: white;
+}
+
+.nav-pills .nav-link i {
+    margin-right: 5px;
+}
+
+/* tabs */
+
+/* stats */
+.stats h3 {
+    font-size: 2.5rem;
+}
+
+.stats p {
+    font-size: 0.95rem;
+}
+
+/* stats */
+
+/* features */
+.features .card {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+}
+
+.features .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.features .icon-box {
+    transition: all 0.3s ease;
+}
+
+.features .card:hover .icon-box {
+    transform: scale(1.1);
+}
+
+/* features */
+
+/* properties */
+.properties {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* properties */
+
+/* cta banner */
+.cta-banner .card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cta-banner img {
+    min-height: 400px;
+}
+
+.cta-banner .btn {
+    padding: 12px 24px;
+    font-weight: 600;
+}
+
+/* cta banner */
+
+/* cities/kota */
 .overlay {
     position: relative;
     overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
 }
 
 .overlay img {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 12px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.4s ease;
 }
 
 /* Overlay ungu */
@@ -62,15 +215,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(128, 0, 128, 0.4);
-    /* Ungu transparan */
-    border-radius: 12px;
+    background: linear-gradient(to bottom, rgba(104, 72, 154, 0.3), rgba(104, 72, 154, 0.7));
+    border-radius: 16px;
     z-index: 1;
+    transition: all 0.3s ease;
 }
 
-.overlay:hover {
+.overlay:hover::after {
+    background: linear-gradient(to bottom, rgba(104, 72, 154, 0.5), rgba(104, 72, 154, 0.8));
+}
+
+.overlay:hover img {
     transform: scale(1.1);
-    transition: transform 0.3s ease;
 }
 
 /* Teks di atas gambar */
@@ -82,30 +238,83 @@
     color: white;
     text-align: center;
     z-index: 2;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
-/* kota */
+
+/* cities/kota */
+
+/* testimonials */
+.testimonials .card {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.testimonials .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials img {
+    border: 3px solid #f0f0f0;
+}
+
+/* testimonials */
 
 /* footer */
 footer {
-    background-color: #68489A;
+    background-color: var(--color-primer);
     color: white;
-    padding: 20px 0;
+    padding: 40px 0 20px;
 }
 
 footer img {
     width: 120px;
 }
 
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #e0e0e0;
+    padding-left: 5px;
+}
+
 /* footer */
 
-/* kostan */
+/* kostan (property cards) */
 .kostan .card {
     background-image: url(./assets/bg-search.png);
     background-size: cover;
     background-position: center;
-    border: 1px solid #cdcdcd;
-    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
     height: 200px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.kostan .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.kostan .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+}
+
+.kostan .badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    font-weight: 600;
 }
 
 /* kostan */
@@ -114,22 +323,88 @@ footer img {
 .main-image {
     width: 100%;
     object-fit: cover;
-    border-radius: 12px;
-    height: 10vh;
+    border-radius: 16px;
+    height: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .thumbnail {
     width: 100%;
     object-fit: cover;
-    height: 10vh;
-    /* bagi rata 3 gambar minus gap */
+    height: 120px;
     border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
 }
 
 .thumbnail:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    border-color: var(--color-primer);
+    box-shadow: 0 4px 12px rgba(104, 72, 154, 0.3);
 }
+
+.thumbnail.active {
+    border-color: var(--color-primer);
+}
+
 /* detail */
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .stats h3 {
+        font-size: 1.8rem;
+    }
+
+    .nav-pills .nav-link {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        margin-right: 5px;
+    }
+
+    .cta-banner img {
+        min-height: 250px;
+    }
+
+    .main-image {
+        height: 300px;
+    }
+
+    .thumbnail {
+        height: 80px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero > div {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Card shadows */
+.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+}
